@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    width: 100%;
+  }
+    
+  .hero-section {
+    display: flex;
+    padding: 50px;
+    background-color: #f1f1f1;
+  }
+  
+  .hero-content {
+    flex: 1;
+  }
+  
+  .car-image img {
+    width: 100%;
+  }
+  
+  .hero-buttons {
+    margin-top: 20px;
+  }
+  
+  .start-btn, .learn-more-btn {
+    margin-right: 10px;
+  }
+  

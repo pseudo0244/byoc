@@ -1,7 +1,7 @@
 .wrapper{
   width: 420px;
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, .2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(30px);
   color: rgb(255, 255, 255);
   border-radius: 10px;
