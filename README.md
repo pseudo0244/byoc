@@ -1,7 +1,5 @@
 # 🚗 Welcome to BYOC - Build Your Own Car!
 
-![Build Your Own Car](https://via.placeholder.com/1200x400?text=Build+Your+Own+Car)
-
 This is my web tech mini project for college. **BYOC** is a **3D car configurator** where you can build your dream Porsche with ease and creativity.
 
 ## 🌟 Features
