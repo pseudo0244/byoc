@@ -1,0 +1,38 @@
+.configurator-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #121212;
+    height: 100vh;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .car-3d-view {
+    width: 100%;
+    height: 500px;
+    margin-bottom: 20px;
+  }
+  
+  .controls {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  label {
+    margin-right: 10px;
+  }
+  
+  input[type="color"] {
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .loading {
+    color: #fff;
+    font-size: 24px;
+  }
+  

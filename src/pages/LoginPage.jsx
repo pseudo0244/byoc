@@ -1,34 +1,35 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios'; // Import axios for HTTP requests
-import { Eye, EyeOff, User, Lock, ArrowRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirecting
+import { ArrowRight } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function LoginPage() {
+export default function SignupPage() {
+  const navigate = useNavigate();  // Initialize useNavigate hook
+
+  // State hooks for form fields
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [error, setError] = useState('');  // Error handling state
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // Audio to play upon signing in
+  const bgm = new Audio('Assets/bgm.mp3');  // Import the BGM from Assets folder
 
-    try {
-      const response = await axios.post('http://localhost:5001/login', { email, password });
-      
-      console.log(response.data);  // Handle success, e.g., redirect user to dashboard
+  // Handle sign in button click
+  const handleSignIn = () => {
+    // Delay the music by 3 seconds
+    setTimeout(() => {
+      // Play background music
+      bgm.play();
 
-      // If login is successful, navigate to the home page
-      navigate('/home'); // Adjust the route as per your app's routing setup
-    } catch (err) {
-      setError('Invalid email or password');  // Handle errors
-    }
+      // Navigate to the homepage after the audio finishes
+      bgm.onended = () => {
+        navigate('/home');  // Redirect to homepage
+      };
+    }, 3000);  // 3000 milliseconds = 3 seconds
   };
 
   return (
     <div className="min-h-screen flex bg-black">
-      {/* Left side - Login Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
@@ -36,18 +37,23 @@ export default function LoginPage() {
           transition={{ duration: 0.5 }}
           className="w-full max-w-md"
         >
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form className="space-y-6">
             <div className="text-center">
               <motion.h1
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-300"
+                className="text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
               >
-                Welcome Back
+                Join Us
               </motion.h1>
-              <p className="text-purple-300">Enter your details to access your account</p>
+              <p className="text-purple-300">Create your account and start your journey</p>
             </div>
+
+            {/* Display error message */}
+            {error && <div className="text-red-500">{error}</div>}
+
+            {/* Form Fields */}
             <div className="space-y-4">
               <div className="relative">
                 <input
@@ -59,11 +65,10 @@ export default function LoginPage() {
                   placeholder="Email address"
                   required
                 />
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400" size={18} />
               </div>
               <div className="relative">
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type="password"
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -71,61 +76,34 @@ export default function LoginPage() {
                   placeholder="Password"
                   required
                 />
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400" size={18} />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-purple-400 hover:text-purple-300 focus:outline-none"
-                >
-                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                </button>
               </div>
             </div>
-            {error && <p className="text-red-500 text-center">{error}</p>}
-            <div className="flex items-center justify-between text-sm">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
-                />
-                <label htmlFor="remember-me" className="ml-2 block text-purple-300">
-                  Remember me
-                </label>
-              </div>
-              <a href="#" className="text-purple-400 hover:text-purple-300 transition-colors duration-300">
-                Forgot password?
-              </a>
-            </div>
+
+            {/* Submit Button (Sign In) */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              type="submit"
-              className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-purple-500 hover:bg-gradient-to-r hover:from-purple-700 hover:to-purple-600 text-white font-bold rounded-lg shadow-lg transition duration-300 ease-in-out flex items-center justify-center"
+              type="button"
+              onClick={handleSignIn} // Trigger BGM and navigation on click
+              className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg shadow-lg transition duration-300 ease-in-out flex items-center justify-center"
             >
-              Sign In
+              Vroom
               <ArrowRight className="ml-2" size={18} />
             </motion.button>
           </form>
+
+          {/* Sign up link */}
           <p className="mt-8 text-center text-purple-300">
             Don't have an account?{' '}
-            <a href="signup" className="text-purple-400 hover:text-purple-300 font-semibold">
-              Sign up
-            </a>
+            <Link to="/signup" className="text-purple-400 hover:text-purple-300 font-semibold">
+              Sign Up
+            </Link>
           </p>
         </motion.div>
       </div>
-      
-      {/* Right side - Image */}
-      <div className="hidden lg:block w-1/2 bg-black-900">
-        <div className="h-full w-full flex items-center justify-center overflow-hidden">
-          <img
-            src="Assets/1.png" // Replace with actual image path
-            alt="Luxury Car"
-            className="object-cover w-4/5 h-full"
-          />
-        </div>
-      </div>
+
+      {/* Right side image */}
+      <div className="hidden lg:flex lg:w-1/3 bg-cover bg-center" style={{ backgroundImage: 'url("Assets/1.png")' }}></div>
     </div>
   );
 }

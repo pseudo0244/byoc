@@ -2,8 +2,11 @@ import { useState } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { Eye, EyeOff, User, Lock, Mail, ArrowRight } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function SignupPage() {
+  const navigate = useNavigate();  // Initialize useNavigate hook
+
   // State hooks for form fields
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -32,7 +35,9 @@ export default function SignupPage() {
       });
 
       console.log(response.data);  // Handle success
-      // Optionally, redirect the user or show a success message here
+      // Redirect to homepage upon successful signup
+      navigate('/');  // Navigate to the homepage
+
     } catch (err) {
       setError('Error signing up. Please try again.');
       console.error(err.response ? err.response.data : err);
@@ -41,6 +46,7 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen flex bg-black">
+      {/* Left side with form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
@@ -158,11 +164,15 @@ export default function SignupPage() {
           {/* Sign in link */}
           <p className="mt-8 text-center text-purple-300">
             Already have an account?{' '}
-            <a href="/" className="text-purple-400 hover:text-purple-300 font-semibold">
+            <Link to="/" className="text-purple-400 hover:text-purple-300 font-semibold">
               Sign in
-            </a>
+            </Link>
           </p>
         </motion.div>
+      </div>
+
+      {/* Right side with image */}
+      <div className="hidden lg:block lg:w-1/3 bg-cover bg-center" style={{ backgroundImage: 'url(Assets/2.png)' }}>
       </div>
     </div>
   );
