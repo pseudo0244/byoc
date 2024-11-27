@@ -1,6 +1,8 @@
-# 🚗 Welcome to BYOC - Build Your Own Car!
+# Welcome to BYOC - Build Your Own Car!
 
 This is my web tech mini project for college. **BYOC** is a **3D car configurator** where you can build your dream Porsche with ease and creativity.
+
+![BYOC](https://github.com/pseudo0244/byoc/blob/main/img1.png)
 
 ## 🌟 Features
 
@@ -15,6 +17,8 @@ This is my web tech mini project for college. **BYOC** is a **3D car configurato
 - **Backend**: Node.js, Express
 - **Database**: MongoDB
 - **Styling**: Tailwind CSS
+  
+![BYOC](https://github.com/pseudo0244/byoc/blob/main/img2.png)
 
 ## 🤝 Contributing
 
@@ -26,9 +30,7 @@ We welcome contributions! Feel free to fork the repository, create a new branch,
 4. Push to the branch: `git push origin feature/AmazingFeature`
 5. Open a pull request
 
-## 📅 Project Status
-
-This project is currently in development. Stay tuned for updates and new features!
+![BYOC](https://github.com/pseudo0244/byoc/blob/main/img3.png)
 
 ## 🌐 Live Demo
 
