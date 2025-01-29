@@ -12,7 +12,6 @@ export default function Checkout() {
   const handleSubmit = (e) => {
     e.preventDefault()
     setIsProcessing(true)
-    // Simulate payment processing
     setTimeout(() => {
       setIsProcessing(false)
       setIsSuccess(true)
@@ -21,7 +20,6 @@ export default function Checkout() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col md:flex-row items-center md:items-start md:justify-center py-6">
-      {/* Left side - Thank you note and car image */}
       <div className="w-full md:w-1/3 bg-black text-white p-8 md:p-12 flex flex-col justify-between rounded-lg shadow-lg mb-8 md:mb-0">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold mb-4">Thank You for Choosing BYOC</h1>

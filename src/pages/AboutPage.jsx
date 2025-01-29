@@ -65,7 +65,7 @@ export default function AboutUs() {
             <ul className="flex space-x-6">
               <li><a href="home" className="text-white hover:text-porsche-red transition-colors">Home</a></li>
               <li><a href="about" className="text-white hover:text-porsche-red transition-colors">About Us</a></li>
-              <li><a href="#" className="text-white hover:text-porsche-red transition-colors">Models</a></li>
+              <li><a href="https://byocconfig.vercel.app/" className="text-white hover:text-porsche-red transition-colors">Models</a></li>
               <li><a href="contact" className="text-white hover:text-porsche-red transition-colors">Contact Us</a></li>
             </ul>
           </motion.nav>
